@@ -27,6 +27,9 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val new = news[position]
+        val imageUrl =new.urltoImage
+
         //val file = File(args.path)
         Glide
             .with(this)
