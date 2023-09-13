@@ -1,7 +1,6 @@
 package com.justin.ui.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +27,7 @@ private var news: List<Article>,
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val new = news[position]
         val imageUrl = new.urlToImage
+        
         holder.binding.tvTitle.text = new.title
         Glide.with(context)
             .load(imageUrl)

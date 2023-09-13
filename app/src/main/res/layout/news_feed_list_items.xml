@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.cardview.widget.CardView
         android:id="@+id/cvCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:clickable="true"
         android:focusable="true"
+        android:backgroundTint="@color/blue"
         android:foreground="?selectableItemBackground"
         app:cardCornerRadius="10dp">
 
@@ -16,31 +17,46 @@
             android:id="@+id/rlWrapper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp">
+            >
 
-            <LinearLayout
-                android:id="@+id/llNewsFeed"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:elevation="10dp"
+                android:outlineAmbientShadowColor="@color/black"
+                app:cardCornerRadius="8dp">
 
-                <ImageView
-                    android:id="@+id/ivImage"
+                <LinearLayout
+                    android:id="@+id/llNewsFeed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:src="@mipmap/ic_launcher_round" />
+                    >
 
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/title"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    <ImageView
+                        android:id="@+id/ivImage"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher_round" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_gravity="center"
+                        android:textStyle="italic"
+                        android:text="@string/title"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
