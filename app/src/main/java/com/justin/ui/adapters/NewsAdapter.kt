@@ -1,7 +1,6 @@
 package com.justin.ui.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +10,12 @@ import com.justin.newsapplication.R
 import com.justin.newsapplication.databinding.NewsFeedListItemsBinding
 
 class NewsAdapter(
-private val context: Context,
-private var news: List<Article>,
-): RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+    private val context: Context,
+    private var news: List<Article>,
+    private var onItemClick: (Article) -> Unit
+) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
-    class NewsViewHolder(val binding: NewsFeedListItemsBinding): RecyclerView.ViewHolder(binding.root)
+    class NewsViewHolder(val binding: NewsFeedListItemsBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -35,13 +35,19 @@ private var news: List<Article>,
             .error(R.drawable.error_image)
             .into(holder.binding.ivImage)
 
-//        Log.d("ImageURL", imageUrl)
 
-
+        holder.itemView.setOnClickListener {
+            onItemClick(new)
+        }
     }
 
-    fun setTasks(news: List<Article>) {
+    fun setNews(news: List<Article>) {
         this.news = news
         notifyDataSetChanged()
+    }
+
+
+    fun setOnItemClickListener(listener: (Article) -> Unit) {
+        onItemClick = listener
     }
 }
