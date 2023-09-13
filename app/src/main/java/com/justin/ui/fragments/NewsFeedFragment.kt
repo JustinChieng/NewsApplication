@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.justin.newsapplication.databinding.FragmentNewsFeedBinding
 import com.justin.ui.adapters.NewsAdapter
@@ -38,14 +40,37 @@ class NewsFeedFragment() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
 
-        viewModel.articles.asLiveData().observe(viewLifecycleOwner) {
-            adapter.setTasks(it)
+//        viewModel.articles.asLiveData().observe(viewLifecycleOwner) {
+//            adapter.setTasks(it)
+//        }
+
+        viewModel.articles.asLiveData().observe(viewLifecycleOwner) { articles ->
+            adapter.setNews(articles)
+        }
+
+
+        adapter.setOnItemClickListener { article ->
+            val action =
+                NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
+                    imageUrl = article.urlToImage,
+                    articleContent = article.content
+                )
+            findNavController().navigate(action)
         }
     }
 
-    fun setupAdapter() {
-        adapter = NewsAdapter(requireContext(), emptyList()) // Pass the context to the adapter
 
+
+    fun setupAdapter() {
+        adapter = NewsAdapter(requireContext(), emptyList()) { article ->
+
+            val action =
+                NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
+                    imageUrl = article.urlToImage,
+                    articleContent = article.content
+                )
+            findNavController().navigate(action)
+        }
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvRecyclerView.adapter = adapter
         binding.rvRecyclerView.layoutManager = layoutManager
