@@ -11,21 +11,39 @@ import com.justin.data.model.Article
 import com.justin.data.repo.NewsRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class NewsFeedViewModel(
     private  val repo: NewsRepo
 ) : ViewModel() {
     val articles: MutableStateFlow<List<Article>> = MutableStateFlow(emptyList())
+    private val _category: MutableStateFlow<String> = MutableStateFlow("general")
+    val category: StateFlow<String> = _category
 
     init {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            val res = repo.getNews(category.value)
+//            articles.value = res
+//            Log.d("debugging", res.toString())
+//
+//        }
+        FetchNews()
+
+    }
+
+    fun setCategory(cat: String) {
+        Log.d("debugging", "Hello set")
+        _category.value = cat
+    }
+
+    fun FetchNews() {
         viewModelScope.launch(Dispatchers.IO) {
-            val res = repo.getNews("general")
+            val res = repo.getNews(category.value)
             articles.value = res
             Log.d("debugging", res.toString())
 
         }
-
     }
 
     companion object {
