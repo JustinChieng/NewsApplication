@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.justin.data.model.Article
+import com.justin.data.model.Result
 import com.justin.newsapplication.R
 import com.justin.newsapplication.databinding.NewsFeedListItemsBinding
 
 class NewsAdapter(
     private val context: Context,
-    private var news: List<Article>,
-    private var onItemClick: (Article) -> Unit
+    private var news: List<Result>,
+    private var onItemClick: (Result) -> Unit
 ) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     class NewsViewHolder(val binding: NewsFeedListItemsBinding) : RecyclerView.ViewHolder(binding.root)
@@ -27,7 +27,8 @@ class NewsAdapter(
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val new = news[position]
-        val imageUrl = new.urlToImage
+        val imageUrl = new.image_url
+        
         holder.binding.tvTitle.text = new.title
         Glide.with(context)
             .load(imageUrl)
@@ -41,13 +42,13 @@ class NewsAdapter(
         }
     }
 
-    fun setNews(news: List<Article>) {
+    fun setNews(news: List<Result>) {
         this.news = news
         notifyDataSetChanged()
     }
 
 
-    fun setOnItemClickListener(listener: (Article) -> Unit) {
+    fun setOnItemClickListener(listener: (Result) -> Unit) {
         onItemClick = listener
     }
 }

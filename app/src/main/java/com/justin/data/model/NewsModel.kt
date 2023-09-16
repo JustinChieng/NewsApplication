@@ -1,7 +1,8 @@
 package com.justin.data.model
 
 data class NewsModel(
-    val articles: List<Article>,
+    val nextPage: String,
+    val results: List<Result>,
     val status: String,
     val totalResults: Int
 )

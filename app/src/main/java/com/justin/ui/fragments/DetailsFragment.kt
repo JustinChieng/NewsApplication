@@ -8,13 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.justin.data.retrofit.NewsApi
 import com.justin.newsapplication.R
 import com.justin.newsapplication.databinding.FragmentDetailsBinding
+
 
 class DetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     private val args: DetailsFragmentArgs by navArgs()
+
+    private lateinit var apiService: NewsApi
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,3 +50,4 @@ class DetailsFragment : Fragment() {
         }
     }
 }
+

@@ -7,20 +7,20 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.justin.MyApplication
-import com.justin.data.model.Article
 import com.justin.data.repo.NewsRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import com.justin.data.model.Result
 
 class DetailsViewModel(
     private  val repo: NewsRepo
 ) : ViewModel() {
-    val articles: MutableStateFlow<List<Article>> = MutableStateFlow(emptyList())
+    val articles: MutableStateFlow<List<Result>> = MutableStateFlow(emptyList())
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val res = repo.getNews("general")
+            val res = repo.getNews("top")
             articles.value = res
             Log.d("debugging", res.toString())
 
