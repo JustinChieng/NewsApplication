@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.justin.MainActivity
@@ -44,12 +43,8 @@ class NewsFeedFragment() : Fragment() {
 
         setupAdapter()
 
-//        viewModel.articles.asLiveData().observe(viewLifecycleOwner) {
-//            adapter.setTasks(it)
-//        }
-
-        viewModel.articles.asLiveData().observe(viewLifecycleOwner) { articles ->
-            adapter.setNews(articles)
+        viewModel.articles.asLiveData().observe(viewLifecycleOwner) { results ->
+            adapter.setNews(results)
         }
 
         viewModel.category.asLiveData().observe(viewLifecycleOwner) {
@@ -58,27 +53,35 @@ class NewsFeedFragment() : Fragment() {
         }
 
 
-        adapter.setOnItemClickListener { article ->
+        adapter.setOnItemClickListener { results ->
             val action =
-                NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
-                    imageUrl = article.urlToImage,
-                    articleContent = article.content
-                )
-            findNavController().navigate(action)
+                results.image_url?.let {
+                    NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
+                        imageUrl = it,
+                        articleContent = results.content
+                    )
+                }
+            if (action != null) {
+                findNavController().navigate(action)
+            }
         }
     }
 
 
 
     fun setupAdapter() {
-        adapter = NewsAdapter(requireContext(), emptyList()) { article ->
+        adapter = NewsAdapter(requireContext(), emptyList()) { results ->
 
             val action =
-                NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
-                    imageUrl = article.urlToImage,
-                    articleContent = article.content
-                )
-            findNavController().navigate(action)
+                results.image_url?.let {
+                    NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
+                        imageUrl = it,
+                        articleContent = results.content
+                    )
+                }
+            if (action != null) {
+                findNavController().navigate(action)
+            }
         }
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvRecyclerView.adapter = adapter

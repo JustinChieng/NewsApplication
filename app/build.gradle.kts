@@ -62,4 +62,5 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     implementation ("com.google.code.gson:gson:2.8.8")
     kapt ("com.github.bumptech.glide:compiler:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 }

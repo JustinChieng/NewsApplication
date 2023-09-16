@@ -1,4 +1,4 @@
-package com.justin.newsapplication.ui
+package com.justin.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

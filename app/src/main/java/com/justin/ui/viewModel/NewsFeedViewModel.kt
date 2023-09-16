@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.justin.MyApplication
-import com.justin.data.model.Article
+import com.justin.data.model.Result
 import com.justin.data.repo.NewsRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,17 +17,11 @@ import kotlinx.coroutines.launch
 class NewsFeedViewModel(
     private  val repo: NewsRepo
 ) : ViewModel() {
-    val articles: MutableStateFlow<List<Article>> = MutableStateFlow(emptyList())
-    private val _category: MutableStateFlow<String> = MutableStateFlow("general")
+    val articles: MutableStateFlow<List<Result>> = MutableStateFlow(emptyList())
+    private val _category: MutableStateFlow<String> = MutableStateFlow("top")
     val category: StateFlow<String> = _category
 
     init {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val res = repo.getNews(category.value)
-//            articles.value = res
-//            Log.d("debugging", res.toString())
-//
-//        }
         FetchNews()
 
     }

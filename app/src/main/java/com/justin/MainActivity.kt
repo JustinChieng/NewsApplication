@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("debugging", menuItem.itemId.toString())
             Log.d("debugging", R.id.BusinessFragment.toString())
             when (menuItem.itemId) {
-                R.id.GeneralFragment -> viewModel.setCategory("general")
+                R.id.GeneralFragment -> viewModel.setCategory("top")
                 R.id.BusinessFragment -> viewModel.setCategory("business")
                 R.id.EntertainmentFragment -> viewModel.setCategory("entertainment")
                 R.id.SportsFragment -> viewModel.setCategory("sports")
