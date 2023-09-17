@@ -12,6 +12,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.viewModels
@@ -63,6 +64,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.TechnologyFragment -> viewModel.setCategory("technology")
                 else -> {}
             }
+
+            drawerLayout.closeDrawer(GravityCompat.START)
 
             true
         }
