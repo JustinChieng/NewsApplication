@@ -22,6 +22,7 @@
             android:id="@+id/tvNews"
             android:layout_width="333dp"
             android:layout_height="225dp"
+            android:scrollbars="vertical"
             android:background="@drawable/edit_text_bg"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pellentesque vestibulum elit, non sodales urna ultricies id. Donec placerat, elit sit amet lacinia auctor, magna magna pretium augue, et placerat tortor nibh a tellus. Aliquam sagittis dapibus libero, vitae iaculis ligula porttitor non. Suspendisse tempus, leo a pharetra tristique, libero lectus suscipit lectus, ac aliquam enim augue non arcu. Ut fringilla id mauris a ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam luctus dictum blandit. Praesent eu consequat nisi. Mauris odio enim, efficitur in vulputate ac, viverra vel nisi. Phasellus in mattis risus."
             app:layout_constraintEnd_toEndOf="parent"

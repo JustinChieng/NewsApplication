@@ -1,6 +1,7 @@
 package com.justin.ui.fragments
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,8 @@ class DetailsFragment : Fragment() {
 
         // Set the article content to the TextView
         binding.tvNews.text = articleContent
+        binding.tvNews.movementMethod = ScrollingMovementMethod()
+
 
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
