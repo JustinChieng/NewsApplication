@@ -1,6 +1,5 @@
 package com.justin.ui.fragments
 
-
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,11 +11,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.justin.MainActivity
 import com.justin.newsapplication.databinding.FragmentNewsFeedBinding
 import com.justin.ui.adapters.NewsAdapter
 import com.justin.ui.viewModel.NewsFeedViewModel
-
 
 class NewsFeedFragment() : Fragment() {
 
@@ -25,7 +24,7 @@ class NewsFeedFragment() : Fragment() {
 
     private val viewModel: NewsFeedViewModel by viewModels(
         ownerProducer = { requireActivity() as MainActivity },
-        factoryProducer = { NewsFeedViewModel.Factory  }
+        factoryProducer = { NewsFeedViewModel.Factory }
     )
     private lateinit var adapter: NewsAdapter
 
@@ -43,31 +42,33 @@ class NewsFeedFragment() : Fragment() {
 
         setupAdapter()
 
-        viewModel.articles.asLiveData().observe(viewLifecycleOwner) { results ->
-            adapter.setNews(results)
-        }
-
-        viewModel.category.asLiveData().observe(viewLifecycleOwner) {
-            Log.d("debugging", "hello")
-            viewModel.FetchNews()
-        }
-
-
-        adapter.setOnItemClickListener { results ->
-            val action =
-                results.image_url?.let {
-                    NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
-                        imageUrl = it,
-                        articleContent = results.content
-                    )
-                }
-            if (action != null) {
-                findNavController().navigate(action)
+        try {
+            viewModel.articles.asLiveData().observe(viewLifecycleOwner) { results ->
+                adapter.setNews(results)
             }
+
+            viewModel.category.asLiveData().observe(viewLifecycleOwner) {
+                Log.d("debugging", "hello")
+                viewModel.FetchNews()
+            }
+
+            adapter.setOnItemClickListener { results ->
+                val action =
+                    results.image_url?.let {
+                        NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
+                            imageUrl = it,
+                            articleContent = results.content
+                        )
+                    }
+                if (action != null) {
+                    findNavController().navigate(action)
+                }
+            }
+        } catch (e: Exception) {
+            Log.e("NewsFeedFragment", "Error loading news: ${e.message}")
+            Snackbar.make(view, "Error loading news. Please refresh the app.", Snackbar.LENGTH_LONG).show()
         }
     }
-
-
 
     fun setupAdapter() {
         adapter = NewsAdapter(requireContext(), emptyList()) { results ->
@@ -86,11 +87,5 @@ class NewsFeedFragment() : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvRecyclerView.adapter = adapter
         binding.rvRecyclerView.layoutManager = layoutManager
-
-
     }
-
-
-
 }
-
