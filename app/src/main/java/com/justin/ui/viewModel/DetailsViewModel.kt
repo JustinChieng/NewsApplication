@@ -21,7 +21,7 @@ class DetailsViewModel(
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val res = repo.getNews("top")
-            articles.value = res
+            articles.value = res.results
             Log.d("debugging", res.toString())
 
         }
