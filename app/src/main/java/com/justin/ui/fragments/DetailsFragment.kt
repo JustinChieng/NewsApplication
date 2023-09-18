@@ -35,8 +35,8 @@ class DetailsFragment : Fragment() {
         // Retrieve the imageUrl and articleContent from navigation arguments
         val imageUrl = args.imageUrl
         val articleContent = args.articleContent
+        // Use binding to find the ScrollView
 
-        // Load the image using Glide
         Glide.with(requireContext())
             .load(imageUrl)
             .placeholder(R.drawable.ic_img)

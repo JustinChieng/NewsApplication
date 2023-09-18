@@ -14,4 +14,7 @@
     <string name="business">Business</string>
     <string name="general">General</string>
     <string name="title">title</string>
+    <string name="load_more">Load More</string>
+    <string name="published_date">Published_date</string>
+    <string name="back">Back</string>
 </resources>

@@ -36,6 +36,8 @@ class NewsAdapter(
             .error(R.drawable.error_image)
             .into(holder.binding.ivImage)
 
+        holder.binding.tvDate.text = new.pubDate
+
 
         holder.itemView.setOnClickListener {
             onItemClick(new)
