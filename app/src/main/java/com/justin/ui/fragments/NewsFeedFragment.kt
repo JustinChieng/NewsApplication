@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import android.widget.ProgressBar
+
 import androidx.core.view.isVisible
+
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
@@ -15,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.justin.MainActivity
+import com.justin.newsapplication.R
 import com.justin.newsapplication.databinding.FragmentNewsFeedBinding
 import com.justin.ui.adapters.NewsAdapter
 import com.justin.ui.viewModel.NewsFeedViewModel
@@ -67,6 +72,8 @@ class NewsFeedFragment() : Fragment() {
                     results.image_url?.let {
                         NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
                             imageUrl = it,
+                            articleTitle = results.title,
+                            articleDate = results.pubDate,
                             articleContent = results.content
                         )
                     }
@@ -90,7 +97,9 @@ class NewsFeedFragment() : Fragment() {
             val action =
                 results.image_url?.let {
                     NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
+                        articleTitle = results.title,
                         imageUrl = it,
+                        articleDate = results.pubDate,
                         articleContent = results.content
                     )
                 }

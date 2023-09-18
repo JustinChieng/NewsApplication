@@ -23,6 +23,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationView
 import com.justin.newsapplication.R
+import com.justin.ui.fragments.NewsFeedFragment
 import com.justin.ui.viewModel.NewsFeedViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -75,8 +76,6 @@ class MainActivity : AppCompatActivity() {
             navController,
             appBarConfiguration
         )
-
-
 
     }
 

@@ -34,6 +34,8 @@ class DetailsFragment : Fragment() {
 
         // Retrieve the imageUrl and articleContent from navigation arguments
         val imageUrl = args.imageUrl
+        val articleTitle = args.articleTitle
+        val articleDate = args.articleDate
         val articleContent = args.articleContent
         // Use binding to find the ScrollView
 
@@ -44,6 +46,8 @@ class DetailsFragment : Fragment() {
             .into(binding.ivImage)
 
         // Set the article content to the TextView
+        binding.tvTitle.text = articleTitle
+        binding.detailDate.text = articleDate
         binding.tvNews.text = articleContent
         binding.tvNews.movementMethod = ScrollingMovementMethod()
 

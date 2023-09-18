@@ -44,6 +44,11 @@
             android:clickable="true"
             android:padding="10dp"
             app:cornerRadius="10dp"
+
+            android:backgroundTint="@color/baby_blue2"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
+
             android:backgroundTint="@color/baby_blue2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,3 +75,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+

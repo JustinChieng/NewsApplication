@@ -10,6 +10,22 @@
         tools:context="com.justin.MainActivity"
         android:padding="20dp">
 
+        <TextView
+            android:id="@id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="24dp"/>
+
+        <TextView
+            android:id="@+id/detailDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="260dp"/>
+
         <ImageView
             android:id="@+id/ivImage"
             android:layout_width="400dp"
@@ -20,6 +36,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"/>
+
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -40,17 +58,18 @@
                 android:textSize="20sp"
                 android:textStyle="italic"
                 android:maxLines="100000" />
+
         </ScrollView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBack"
-            android:layout_width="190dp"
-            android:layout_height="55dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/baby_blue2"
-            app:cornerRadius="10dp"
-            android:text="@string/back" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBack"
+                android:layout_width="190dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/baby_blue2"
+                app:cornerRadius="10dp"
+                android:text="@string/back" />
     </LinearLayout>
 
 </layout>
