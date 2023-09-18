@@ -40,6 +40,7 @@ class NewsFeedViewModel(
         }
     }
 
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
