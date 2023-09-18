@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:background="@drawable/edit_text_bg"
+                android:background="@drawable/background3"
                 android:padding="10dp"
                 android:text=""
                 android:textSize="20sp"
