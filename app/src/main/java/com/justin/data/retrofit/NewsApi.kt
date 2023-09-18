@@ -10,7 +10,8 @@ interface NewsApi {
     suspend fun getNews(
         @Query("q") q : String,
         @Query("apiKey") key : String,
-        @Query("category") category : String?
+        @Query("category") category : String?,
+        @Query("page") nextPage : String
     ): NewsModel
 
 }
