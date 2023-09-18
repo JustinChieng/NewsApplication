@@ -46,5 +46,13 @@
         <argument
             android:name="articleContent"
             app:argType="string" />
+
+        <argument
+            android:name="articleTitle"
+            app:argType="string" />
+
+        <argument
+            android:name="articleDate"
+            app:argType="string" />
     </fragment>
 </navigation>

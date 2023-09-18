@@ -23,6 +23,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationView
 import com.justin.newsapplication.R
+import com.justin.ui.fragments.NewsFeedFragment
 import com.justin.ui.viewModel.NewsFeedViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -76,17 +77,6 @@ class MainActivity : AppCompatActivity() {
             appBarConfiguration
         )
 
-
-
-
-        if (!Environment.isExternalStorageManager()) {
-            startActivity(
-                Intent(
-                    Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
-                    Uri.fromParts("package", packageName, null)
-                )
-            )
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

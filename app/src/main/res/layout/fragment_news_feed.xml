@@ -43,7 +43,4 @@
             app:cornerRadius="10dp"
             android:backgroundTint="@color/baby_blue2"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
 </layout>
