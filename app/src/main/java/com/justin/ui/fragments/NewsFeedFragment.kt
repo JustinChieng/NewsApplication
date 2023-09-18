@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -16,6 +18,8 @@ import com.justin.MainActivity
 import com.justin.newsapplication.databinding.FragmentNewsFeedBinding
 import com.justin.ui.adapters.NewsAdapter
 import com.justin.ui.viewModel.NewsFeedViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class NewsFeedFragment() : Fragment() {
 
@@ -52,6 +56,12 @@ class NewsFeedFragment() : Fragment() {
                 viewModel.FetchNews()
             }
 
+            lifecycleScope.launch {
+                viewModel.loading.collect {
+                    binding.flLoading.isVisible = it
+                }
+            }
+
             adapter.setOnItemClickListener { results ->
                 val action =
                     results.image_url?.let {
@@ -67,6 +77,10 @@ class NewsFeedFragment() : Fragment() {
         } catch (e: Exception) {
             Log.e("NewsFeedFragment", "Error loading news: ${e.message}")
             Snackbar.make(view, "Error loading news. Please refresh the app.", Snackbar.LENGTH_LONG).show()
+        }
+
+        binding.btnLoadMore.setOnClickListener {
+            viewModel.loadMore()
         }
     }
 

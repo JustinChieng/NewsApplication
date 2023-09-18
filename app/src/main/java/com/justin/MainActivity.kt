@@ -78,15 +78,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-        if (!Environment.isExternalStorageManager()) {
-            startActivity(
-                Intent(
-                    Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
-                    Uri.fromParts("package", packageName, null)
-                )
-            )
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
