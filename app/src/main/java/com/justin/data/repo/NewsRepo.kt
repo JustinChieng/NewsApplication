@@ -10,6 +10,7 @@ class NewsRepo(
     suspend fun getNews(category: String, nextPage: String = "1694948670949060167"): NewsModel {
         return newsApi.getNews("english","pub_294904e56d5f492fe9adc4af602ab5dcde4c8", category, nextPage)
 
+
     }
 
 }

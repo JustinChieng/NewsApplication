@@ -69,17 +69,14 @@ class NewsFeedFragment() : Fragment() {
 
             adapter.setOnItemClickListener { results ->
                 val action =
-                    results.image_url?.let {
                         NewsFeedFragmentDirections.actionNewsFeedFragment4ToDetailsFragment(
-                            imageUrl = it,
+                            imageUrl = results.image_url,
                             articleTitle = results.title,
                             articleDate = results.pubDate,
                             articleContent = results.content
                         )
-                    }
-                if (action != null) {
-                    findNavController().navigate(action)
-                }
+
+                findNavController().navigate(action)
             }
         } catch (e: Exception) {
             Log.e("NewsFeedFragment", "Error loading news: ${e.message}")
